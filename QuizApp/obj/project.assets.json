@@ -4728,11 +4728,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Jung Talent\\QuizApp\\QuizApp\\QuizApp.csproj",
-      "projectName": "QuizApp",
-      "projectPath": "E:\\Jung Talent\\QuizApp\\QuizApp\\QuizApp.csproj",
+      "projectUniqueName": "C:\\Users\\LENOVO\\OneDrive\\Jung Talent\\QuizApp\\QuizApp\\QuizApp.Web.csproj",
+      "projectName": "QuizApp.Web",
+      "projectPath": "C:\\Users\\LENOVO\\OneDrive\\Jung Talent\\QuizApp\\QuizApp\\QuizApp.Web.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "E:\\Jung Talent\\QuizApp\\QuizApp\\obj\\",
+      "outputPath": "C:\\Users\\LENOVO\\OneDrive\\Jung Talent\\QuizApp\\QuizApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
