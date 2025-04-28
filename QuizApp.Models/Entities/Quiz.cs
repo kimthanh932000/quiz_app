@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace QuizApp.Models
+﻿namespace QuizApp.Models
 {
-    public class Quiz
+    public class Quiz : BaseEntity
     {
-        public int Id { get; set; }
         public int TimeLimit { get; set; }
         public ICollection<Question> Questions { get; set; }
     }
