@@ -1,6 +1,5 @@
 ﻿namespace QuizApp.Models.Entities
 {
-    [EntityTypeConfiguration(typeof(UserConfiguration))]
     public class User : BaseEntity
     {
         public string Name { get; set; }

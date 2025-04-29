@@ -1,6 +1,5 @@
 ﻿namespace QuizApp.Models.Entities
 {
-    [EntityTypeConfiguration(typeof(QuestionConfiguration))]
     public class Question : BaseEntity
     {
         public string Text { get; set; }

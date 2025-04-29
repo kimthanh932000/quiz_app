@@ -1,6 +1,5 @@
 ﻿namespace QuizApp.Models.Entities
 {
-    [EntityTypeConfiguration(typeof(QuizAttemptConfiguration))]
     public class QuizAttempt : BaseEntity
     {
         public int QuizId { get; set; }
