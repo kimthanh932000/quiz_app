@@ -1,4 +1,4 @@
-﻿namespace QuizApp.Models
+﻿namespace QuizApp.Models.Entities
 {
     [EntityTypeConfiguration(typeof(UserConfiguration))]
     public class User : BaseEntity

@@ -1,6 +1,4 @@
-﻿using QuizApp.Models.Entities;
-
-namespace QuizApp.Models
+﻿namespace QuizApp.Models.Entities
 {
     [EntityTypeConfiguration(typeof(QuizConfiguration))]
     public class Quiz : BaseEntity
