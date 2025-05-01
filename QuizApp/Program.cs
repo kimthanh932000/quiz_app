@@ -9,6 +9,14 @@ namespace QuizApp
             // Add services to the container.
             builder.Services.AddRazorPages();
 
+            // Register all services
+            builder.Services.AddScoped<IQuestionService, QuestionService>();
+            builder.Services.AddScoped<IAnswerChoiceService, AnswerChoiceService>();
+            builder.Services.AddScoped<IQuizService, QuizService>();
+            builder.Services.AddScoped<IQuizQuestionService, QuizQuestionService>();
+            builder.Services.AddScoped<IQuizAttemptService, QuizAttemptService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
