@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-
-namespace QuizApp.Data
+﻿namespace QuizApp.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
