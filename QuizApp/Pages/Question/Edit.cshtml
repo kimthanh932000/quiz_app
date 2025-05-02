@@ -1,0 +1,74 @@
+﻿@page "{id:int}"
+@model QuizApp.Web.Pages.Question.EditModel
+@{
+    ViewData["Title"] = "Edit Question";
+}
+<h2>Edit Question</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Question.Id" />
+
+    <div class="mb-3">
+        <label asp-for="Question.Text" class="form-label">Question</label>
+        <input asp-for="Question.Text" class="form-control" />
+        <span asp-validation-for="Question.Text" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Answer Choices</label>
+        <div id="answerChoicesContainer">
+            @for (int i = 0; i < Model.AnswerChoices.Count; i++)
+            {
+                <div class="input-group mb-2 answer-entry">
+                    <input type="hidden" name="AnswerChoices[@i].Id" value="@Model.AnswerChoices[i].Id" />
+                    <input type="hidden" name="AnswerChoices[@i].QuestionId" value="@Model.Question.Id" />
+                    <input name="AnswerChoices[@i].Text" value="@Model.AnswerChoices[i].Text" class="form-control" />
+                    <div class="input-group-text">
+                        <input type="checkbox" name="AnswerChoices[@i].IsCorrect" class="form-check-input mt-0"
+                                @(Model.AnswerChoices[i].IsCorrect ? "checked" : "") />
+                        <label class="form-check-label ms-1">Correct</label>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm ms-2 remove-answer">Remove</button>
+                </div>
+            }
+        </div>
+
+        <button type="button" id="addAnswer" class="btn btn-outline-primary">Add Answer</button>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Update</button>
+    <a asp-page="List" class="btn btn-secondary mt-3">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        let answerIndex = @Model.AnswerChoices.Count;
+
+        document.getElementById("addAnswer").addEventListener("click", function () {
+            const container = document.getElementById("answerChoicesContainer");
+
+            const div = document.createElement("div");
+            div.className = "input-group mb-2 answer-entry";
+            div.innerHTML = `
+                        <input type="hidden" name="AnswerChoices[${answerIndex}].Id" value="0" />
+                        <input type="hidden" name="AnswerChoices[${answerIndex}].QuestionId" value="@Model.Question.Id" />
+                        <input name="AnswerChoices[${answerIndex}].Text" class="form-control" placeholder="Answer text..." />
+                        <div class="input-group-text">
+                            <input type="checkbox" name="AnswerChoices[${answerIndex}].IsCorrect" class="form-check-input mt-0" />
+                            <label class="form-check-label ms-1">Correct</label>
+                        </div>
+                        <button type="button" class="btn btn-danger btn-sm ms-2 remove-answer">Remove</button>
+                    `;
+
+            container.appendChild(div);
+            answerIndex++;
+        });
+
+        document.addEventListener("click", function (e) {
+            if (e.target && e.target.classList.contains("remove-answer")) {
+                e.target.closest(".answer-entry").remove();
+            }
+        });
+    </script>
+}

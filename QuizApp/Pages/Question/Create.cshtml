@@ -1,0 +1,59 @@
+﻿@page
+@model QuizApp.Web.Pages.Question.CreateModel
+@{
+    ViewData["Title"] = "Create Question";
+}
+<h2>Create New Question</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="@Model.Question.Text" class="form-label">Question</label>
+        <input asp-for="@Model.Question.Text" class="form-control" />
+        <span asp-validation-for="@Model.Question.Text" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Answer Choices</label>
+        <div id="answerChoicesContainer">
+            @for (int i = 0; i < Model.AnswerChoices.Count; i++)
+            {
+            <div class="input-group mb-2">
+                <input name="AnswerChoices[@i].Text" class="form-control" placeholder="Answer text..." />
+                <input type="checkbox" name="AnswerChoices[@i].IsCorrect" class="form-check-input ms-2 mt-2" />
+                <button type="button" class="btn btn-danger btn-sm ms-2 remove-answer">Remove</button>
+            </div>
+            }
+        </div>
+
+        <button type="button" class="btn btn-outline-primary" id="addAnswer">Add Answer</button>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Save</button>
+    <a asp-page="List" class="btn btn-secondary mt-3">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        let answerIndex = @Model.AnswerChoices.Count;
+
+        document.getElementById("addAnswer").addEventListener("click", function () {
+            const container = document.getElementById("answerChoicesContainer");
+            const div = document.createElement("div");
+            div.className = "input-group mb-2";
+            div.innerHTML = `
+                    <input name="AnswerChoices[${answerIndex}].Text" class="form-control" placeholder="Answer text..." />
+                    <input type="checkbox" name="AnswerChoices[${answerIndex}].IsCorrect" class="form-check-input ms-2 mt-2" />
+                    <button type="button" class="btn btn-danger btn-sm ms-2 remove-answer">Remove</button>
+                `;
+            container.appendChild(div);
+            answerIndex++;
+        });
+
+        document.addEventListener("click", function (e) {
+            if (e.target && e.target.classList.contains("remove-answer")) {
+                e.target.parentElement.remove();
+            }
+        });
+    </script>
+}

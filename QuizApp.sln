@@ -5,11 +5,11 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizApp.Web", "QuizApp\QuizApp.Web.csproj", "{BBE86BA4-253F-44DD-A2B9-530C357AFD7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp.DataAccess", "QuizApp.DataAccess\QuizApp.DataAccess.csproj", "{88E0B239-85EF-4F7E-8032-F9FCCEE9F581}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizApp.DataAccess", "QuizApp.DataAccess\QuizApp.DataAccess.csproj", "{88E0B239-85EF-4F7E-8032-F9FCCEE9F581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp.Models", "QuizApp.Models\QuizApp.Models.csproj", "{45BFFBC2-DC3C-4E00-8B7D-ECD0BB984250}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizApp.Models", "QuizApp.Models\QuizApp.Models.csproj", "{45BFFBC2-DC3C-4E00-8B7D-ECD0BB984250}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp.Services", "QuizApp.Services\QuizApp.Services.csproj", "{E965FAE7-FF22-4C15-AC34-61B0E364D067}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuizApp.Services", "QuizApp.Services\QuizApp.Services.csproj", "{E965FAE7-FF22-4C15-AC34-61B0E364D067}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

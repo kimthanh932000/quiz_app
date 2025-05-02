@@ -1,0 +1,21 @@
+﻿@page "{id:int}"
+@model QuizApp.Web.Pages.Quiz.ScoreModel
+@{
+    ViewData["Title"] = "Quiz Result";
+}
+<h2>Quiz Result</h2>
+
+@if (!string.IsNullOrEmpty(Model.Score))
+{
+    <div class="alert alert-success">
+        <strong>Your Score:</strong> @Model.Score
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        Score is not available. Please complete a quiz attempt.
+    </div>
+}
+
+@* <a asp-page="Select" class="btn btn-primary mt-3">Try Another Quiz</a> *@
