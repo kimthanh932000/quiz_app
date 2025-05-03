@@ -11,7 +11,7 @@
 
             builder
                 .HasMany(q => q.AnswerChoices)
-                .WithOne(a => a.QuestionNavigation)
+                .WithOne(a => a.Question)
                 .HasForeignKey(a => a.QuestionId);
 
             builder
@@ -19,11 +19,11 @@
                 .WithMany(q => q.Questions)
                 .UsingEntity<QuizQuestion>(
                     j => j
-                         .HasOne(qq => qq.QuizNavigation)
+                         .HasOne(qq => qq.Quiz)
                          .WithMany(q => q.QuizQuestions)
                          .HasForeignKey(nameof(QuizQuestion.QuizId)),
                     j => j
-                         .HasOne(qq => qq.QuestionNavigation)
+                         .HasOne(qq => qq.Question)
                          .WithMany(q => q.QuizQuestions)
                          .HasForeignKey(nameof(QuizQuestion.QuestionId)),
                     j =>

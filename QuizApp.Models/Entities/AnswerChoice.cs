@@ -4,7 +4,7 @@
     {
         public string Text { get; set; }
         public int QuestionId { get; set; }
-        public Question QuestionNavigation { get; set; }
+        public Question Question { get; set; }    //Navigation property
         public bool IsCorrect { get; set; }
     }
 }

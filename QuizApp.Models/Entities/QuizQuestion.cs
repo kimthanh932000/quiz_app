@@ -3,8 +3,8 @@
     public class QuizQuestion : BaseEntity
     {
         public int QuizId { get; set; }
-        public Quiz QuizNavigation { get; set; }
+        public Quiz Quiz { get; set; }  //Navigation property
         public int QuestionId { get; set; }
-        public Question QuestionNavigation { get; set; }
+        public Question Question { get; set; }  //Navigation property
     }
 }
