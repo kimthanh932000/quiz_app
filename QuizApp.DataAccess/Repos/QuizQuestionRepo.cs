@@ -18,7 +18,8 @@
         public IEnumerable<QuizQuestion> GetQuestionsByQuizId(int quizId)
         {
             return _context.QuizQuestions
-                .Include(x => x.QuestionNavigation)
+                .Include(x => x.Question)
+                .ThenInclude(q => q.AnswerChoices)
                 .Where(x => x.QuizId == quizId)
                 .ToList();
         }

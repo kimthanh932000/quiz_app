@@ -8,7 +8,7 @@
 <form method="post">
 @*     <input type="hidden" asp-for="@Model.Quiz.Id" />
  *@
-    @if (!string.IsNullOrWhiteSpace(Model.User.Name))
+    @if (!string.IsNullOrWhiteSpace(Model.UserName))
     {
         @for (int i = 0; i < Model.Questions.Count; i++)
         {
@@ -36,9 +36,9 @@
     }
     else {
     <div class="mb-4">
-        <label asp-for="@Model.User.Name" class="form-label">Your Name</label>
-        <input asp-for="@Model.User.Name" class="form-control" />
-        <span asp-validation-for="@Model.User.Name" class="text-danger"></span>
+        <label asp-for="@Model.UserName" class="form-label">Your Name</label>
+        <input asp-for="@Model.UserName" class="form-control" />
+        <span asp-validation-for="@Model.UserName" class="text-danger"></span>
         <button type="submit" asp-page-handler="Start" class="btn btn-primary">Start Quiz</button>
     </div>
     }

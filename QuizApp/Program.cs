@@ -9,13 +9,18 @@ namespace QuizApp
             // Add services to the container.
             builder.Services.AddRazorPages();
 
+            // Register dbcontext
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") 
+                    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
+
             // Register all services
             builder.Services.AddScoped<IQuestionService, QuestionService>();
             builder.Services.AddScoped<IAnswerChoiceService, AnswerChoiceService>();
             builder.Services.AddScoped<IQuizService, QuizService>();
             builder.Services.AddScoped<IQuizQuestionService, QuizQuestionService>();
             builder.Services.AddScoped<IQuizAttemptService, QuizAttemptService>();
-            builder.Services.AddScoped<IUserService, UserService>();
+            //builder.Services.AddScoped<IUserService, UserService>();
 
             var app = builder.Build();
 

@@ -20,9 +20,9 @@ namespace QuizApp.Services.Services
             return _quizAttemptRepo.GetById(id);
         }
 
-        public async Task<IEnumerable<QuizAttempt>> GetByUserIdAsync(int id)
-        {
-            return _quizAttemptRepo.GetByUserId(id);
-        }
+        //public async Task<IEnumerable<QuizAttempt>> GetByUserIdAsync(int id)
+        //{
+        //    return _quizAttemptRepo.GetByUserId(id);
+        //}
     }
 }

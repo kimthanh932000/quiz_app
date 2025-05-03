@@ -4,6 +4,6 @@
     {
         Task AddAsync(QuizAttempt attempt);
         Task<QuizAttempt> GetByIdAsync(int id);
-        Task<IEnumerable<QuizAttempt>> GetByUserIdAsync(int id);
+        //Task<IEnumerable<QuizAttempt>> GetByUserIdAsync(int id);
     }
 }

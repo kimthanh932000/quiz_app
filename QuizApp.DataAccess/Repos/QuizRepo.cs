@@ -24,7 +24,7 @@ namespace QuizApp.DataAccess.Repos
         {
             return _context.Quizzes
                                 .Include(x => x.QuizQuestions)
-                                .ThenInclude(x => x.QuestionNavigation)
+                                .ThenInclude(x => x.Question)
                                 .FirstOrDefault(x => x.Id == id);
         }
     }

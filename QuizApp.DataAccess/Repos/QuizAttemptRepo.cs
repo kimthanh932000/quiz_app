@@ -20,14 +20,14 @@ namespace QuizApp.DataAccess.Repos
         public QuizAttempt GetById(int id)
         {
             return _context.QuizAttempts
-                .Include(qa => qa.QuizNavigation)
-                .Include(qa => qa.UserNavigation)
+                .Include(qa => qa.Quiz)
+                //.Include(qa => qa.User)
                 .FirstOrDefault(qa => qa.Id == id);
         }
 
-        public IEnumerable<QuizAttempt> GetByUserId(int userId)
-        {
-            return _context.QuizAttempts.Where(a => a.UserId == userId).ToList();
-        }
+        //public IEnumerable<QuizAttempt> GetByUserId(int userId)
+        //{
+        //    return _context.QuizAttempts.Where(a => a.UserId == userId).ToList();
+        //}
     }
 }

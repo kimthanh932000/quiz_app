@@ -4,7 +4,7 @@
     {
         public void Configure(EntityTypeBuilder<QuizQuestion> builder)
         {
-            throw new NotImplementedException();
+            //
         }
     }
 }
