@@ -10,4 +10,6 @@ global using QuizApp.Services.Services;
 global using QuizApp.Models.Entities;
 
 global using QuizApp.DataAccess.Data;
+global using QuizApp.DataAccess.Repos.Interfaces;
+global using QuizApp.DataAccess.Repos;
 

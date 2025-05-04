@@ -20,3 +20,4 @@ namespace QuizApp.DataAccess.Data
 }
 // Add-Migration InitialCreate -Project QuizApp.DataAccess -StartupProject QuizApp.Web -OutputDir Data\Migrations -Context ApplicationDbContext
 // Update-Database -Project QuizApp.DataAccess -StartupProject QuizApp.Web -Context ApplicationDbContext
+// Drop-Database -Project QuizApp.DataAccess -StartupProject QuizApp.Web -Context ApplicationDbContext

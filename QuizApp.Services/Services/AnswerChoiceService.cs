@@ -11,22 +11,22 @@
 
         public async Task AddAsync(AnswerChoice answerChoice)
         {
-            _answerChoiceRepo.Add(answerChoice);
+            await _answerChoiceRepo.AddAsync(answerChoice);
         }
 
-        public async Task DeleteAsync(int id)
-        {
-            _answerChoiceRepo.Delete(id);
-        }
+        //public async Task DeleteAsync(int id)
+        //{
+        //    _answerChoiceRepo.Delete(id);
+        //}
 
         public async Task<IEnumerable<AnswerChoice>> GetByQuestionIdAsync(int id)
         {
-            return _answerChoiceRepo.GetByQuestionId(id);
+            return await _answerChoiceRepo.GetByQuestionIdAsync(id);
         }
 
         public async Task UpdateAsync(AnswerChoice answerChoice)
         {
-            _answerChoiceRepo.Update(answerChoice);
+            await _answerChoiceRepo.UpdateAsync(answerChoice);
         }
     }
 }

@@ -2,10 +2,10 @@
 {
     public interface IQuestionRepo
     {
-        Question GetById(int id);
-        IEnumerable<Question> GetAll();
-        void Add(Question question);
-        void Update(Question question);
-        void Delete(int id);
+        Task<Question> GetByIdAsync(int id);
+        Task<IEnumerable<Question>> GetAllAsync();
+        Task<Question> AddAsync(Question question);
+        Task<Question> UpdateAsync(Question question);
+        //void Delete(int id);
     }
 }

@@ -10,29 +10,29 @@ namespace QuizApp.Services.Services
             _questionRepo = questionRepo;
         }
 
-        public async Task AddAsync(Question question)
+        public async Task<Question> AddAsync(Question question)
         {
-            _questionRepo.Add(question); ;
+            return await _questionRepo.AddAsync(question);
         }
 
-        public async Task DeleteAsync(int id)
-        {
-            _questionRepo.Delete(id);
-        }
+        //public async Task DeleteAsync(int id)
+        //{
+        //    _questionRepo.Delete(id);
+        //}
 
         public async Task<IEnumerable<Question>> GetAllAsync()
         {
-            return _questionRepo.GetAll();
+            return await _questionRepo.GetAllAsync();
         }
 
         public async Task<Question> GetByIdAsync(int id)
         {
-            return _questionRepo.GetById(id);
+            return await _questionRepo.GetByIdAsync(id);
         }
 
-        public async Task UpdateAsync(Question question)
+        public async Task<Question> UpdateAsync(Question question)
         {
-            _questionRepo.Update(question);
+            return await _questionRepo.UpdateAsync(question);
         }
     }
 }

@@ -8,10 +8,10 @@
             _context = context;
         }
 
-        public void Add(AnswerChoice answer)
+        public async Task AddAsync(AnswerChoice answer)
         {
-            _context.AnswerChoices.Add(answer);
-            _context.SaveChanges();
+            await _context.AnswerChoices.AddAsync(answer);
+            await _context.SaveChangesAsync();
         }
 
         public void Delete(int id)
@@ -24,15 +24,15 @@
             }
         }
 
-        public IEnumerable<AnswerChoice> GetByQuestionId(int questionId)
+        public async Task<IEnumerable<AnswerChoice>> GetByQuestionIdAsync(int questionId)
         {
-            return _context.AnswerChoices.Where(a => a.QuestionId == questionId).ToList();
+            return await _context.AnswerChoices.Where(a => a.QuestionId == questionId).ToListAsync();
         }
 
-        public void Update(AnswerChoice answer)
+        public async Task UpdateAsync(AnswerChoice answer)
         {
             _context.AnswerChoices.Update(answer);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

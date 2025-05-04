@@ -9,7 +9,7 @@
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<QuizAttempt> QuizAttempts { get; set; }
         public DbSet<QuizQuestion> QuizQuestions { get; set; }
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@
             new QuizConfiguration().Configure(modelBuilder.Entity<Quiz>());
             new QuizAttemptConfiguration().Configure(modelBuilder.Entity<QuizAttempt>());
             new QuizQuestionConfiguration().Configure(modelBuilder.Entity<QuizQuestion>());
-            new UserConfiguration().Configure(modelBuilder.Entity<User>());
+            //new UserConfiguration().Configure(modelBuilder.Entity<User>());
         }
     }
 }

@@ -9,35 +9,38 @@
             _context = context;
         }
 
-        public void Add(Question question)
+        public async Task<Question> AddAsync(Question question)
         {
-            _context.Questions.Add(question);
-            _context.SaveChanges();
+            await _context.Questions.AddAsync(question);
+            await _context.SaveChangesAsync();
+            return question;
         }
 
-        public void Delete(int id)
+        //public void Delete(int id)
+        //{
+        //    var question = _context.Questions.FirstOrDefault(q => q.Id == id);
+        //    if (question != null)
+        //    {
+        //        _context.Questions.Remove(question);
+        //        _context.SaveChanges();
+        //    }
+        //}
+
+        public async Task<IEnumerable<Question>> GetAllAsync()
         {
-            var question = _context.Questions.FirstOrDefault(q => q.Id == id);
-            if (question != null)
-            {
-                _context.Questions.Remove(question);
-                _context.SaveChanges();
-            }
+            return await _context.Questions.Include(q => q.AnswerChoices).ToListAsync();
         }
 
-        public IEnumerable<Question> GetAll()
+        public async Task<Question> GetByIdAsync(int id)
         {
-            return _context.Questions.Include(q => q.AnswerChoices).ToList();
+            return await _context.Questions.Include(q => q.AnswerChoices).FirstOrDefaultAsync(q => q.Id == id);
         }
 
-        public Question GetById(int id)
-        {
-            return _context.Questions.Include(q => q.AnswerChoices).FirstOrDefault(q => q.Id == id);
-        }
-        public void Update(Question question)
+        public async Task<Question> UpdateAsync(Question question)
         {
             _context.Questions.Update(question);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return question;
         }
     }
 }

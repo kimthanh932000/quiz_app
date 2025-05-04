@@ -1,12 +1,10 @@
+using QuizApp.Models.ViewModels;
+
 namespace QuizApp.Web.Pages.Question
 {
     public class EditModel : PageModel
     {
-        [BindProperty]
-        public Models.Entities.Question Question { get; set; }
-
-        [BindProperty]
-        public List<AnswerChoice> AnswerChoices { get; set; }
+        [BindProperty] public EditQuestionViewModel Data { get; set; }
 
         private readonly IQuestionService _questionService;
         private readonly IAnswerChoiceService _answerChoiceService;
@@ -19,32 +17,50 @@ namespace QuizApp.Web.Pages.Question
         {
             _questionService = questionService;
             _answerChoiceService = answerChoiceService;
-            AnswerChoices = new List<AnswerChoice>();
             _logger = logger;
+
+            Data = new EditQuestionViewModel
+            {
+                Options = new List<EditAnswerViewModel>()
+            };
         }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
             try
             {
-                Question = await _questionService.GetByIdAsync(id);
-                if (Question == null)
+                var question = await _questionService.GetByIdAsync(id);
+                if (question == null)
                 {
                     return NotFound();
                 }
 
-                AnswerChoices.AddRange(await _answerChoiceService.GetByQuestionIdAsync(id));
+                Data.Id = question.Id;
+                Data.Text = question.Text;
+
+                var options = await _answerChoiceService.GetByQuestionIdAsync(id);
+
+                Data.Options.AddRange(options.Select(x => new EditAnswerViewModel
+                {
+                    Id = x.Id,
+                    Text = x.Text,
+                    QuestionId = x.QuestionId,
+                    IsCorrect = x.IsCorrect
+                }).ToList());
+
+                Data.CorrectOption = Data.Options.FindIndex(o => o.IsCorrect);
+
                 return Page();
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to fetch the question.");
-                ModelState.AddModelError(string.Empty, "An error occurred while retrieving the question.");
+                ModelState.AddModelError("", "An error occurred while retrieving the question.");
                 return Page();
             }
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             try
             {
@@ -52,22 +68,24 @@ namespace QuizApp.Web.Pages.Question
                 {
                     return Page();
                 }
-
-                await _questionService.UpdateAsync(Question);
-
-                foreach (var choice in AnswerChoices)
+                var question = new Models.Entities.Question
                 {
-                    if (string.IsNullOrWhiteSpace(choice.Text))
-                        continue;
+                    Id = id,
+                    Text = Data.Text,
+                };
 
-                    if (choice.Id == 0)
+                await _questionService.UpdateAsync(question);
+
+                for (int i = 0; i < Data.Options.Count; i++)
+                {
+                    await _answerChoiceService.UpdateAsync(new AnswerChoice
                     {
-                        await _answerChoiceService.AddAsync(choice);
-                    }
-                    else
-                    {
-                        await _answerChoiceService.UpdateAsync(choice);
-                    }
+                        Id = Data.Options[i].Id,
+                        QuestionId = id,
+                        Text = Data.Options[i].Text,
+                        IsCorrect = (i == Data.CorrectOption)
+                    });
+
                 }
 
                 return RedirectToPage("List");
@@ -75,7 +93,7 @@ namespace QuizApp.Web.Pages.Question
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to update the question.");
-                ModelState.AddModelError(string.Empty, "An error occurred while updating the question.");
+                ModelState.AddModelError("", "An error occurred while updating the question.");
                 return Page();
             }
         }

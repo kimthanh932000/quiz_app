@@ -5,14 +5,12 @@
 }
 
 <div class="text-center mt-5">
-    <h1 class="display-4">Welcome to the Quiz App</h1>
-    <p class="lead">Create, take, and track quizzes with ease.</p>
-
+    <h1 class="display-4">Welcome to Quiz App</h1>
+@*     <p class="lead">Create, take, and track quizzes with ease.</p>
+ *@
     <div class="d-grid gap-3 col-6 mx-auto mt-5">
-        <a class="btn btn-primary btn-lg" asp-page="/Quiz/Attempt">Take a Quiz</a>
+        <a class="btn btn-primary btn-lg" asp-page="/Quiz/List">Take a Quiz</a>
         <a class="btn btn-outline-primary btn-lg" asp-page="/Quiz/Create">Create a New Quiz</a>
-        <a class="btn btn-outline-secondary btn-lg" asp-page="/Questions/List">Manage Questions</a>
-        @*         <a class="btn btn-outline-dark btn-lg" asp-page="/QuizAttempt/UserHistory">View My Attempts</a>
-        *@
+        <a class="btn btn-outline-secondary btn-lg" asp-page="/Question/List">Manage Questions</a>
     </div>
 </div>

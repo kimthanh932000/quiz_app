@@ -2,9 +2,9 @@
 {
     public interface IAnswerChoiceRepo
     {
-        IEnumerable<AnswerChoice> GetByQuestionId(int questionId);
-        void Add(AnswerChoice answer);
-        void Update(AnswerChoice answer);
+        Task<IEnumerable<AnswerChoice>> GetByQuestionIdAsync(int questionId);
+        Task AddAsync(AnswerChoice answer);
+        Task UpdateAsync(AnswerChoice answer);
         void Delete(int id);
     }
 }

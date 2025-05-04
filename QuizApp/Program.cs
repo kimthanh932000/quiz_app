@@ -14,6 +14,13 @@ namespace QuizApp
                     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection") 
                     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
+            // Register all repos
+            builder.Services.AddScoped<IQuestionRepo, QuestionRepo>();
+            builder.Services.AddScoped<IAnswerChoiceRepo, AnswerChoiceRepo>();
+            builder.Services.AddScoped<IQuizRepo, QuizRepo>();
+            builder.Services.AddScoped<IQuizQuestionRepo, QuizQuestionRepo>();
+            builder.Services.AddScoped<IQuizAttemptRepo, QuizAttemptRepo>();
+
             // Register all services
             builder.Services.AddScoped<IQuestionService, QuestionService>();
             builder.Services.AddScoped<IAnswerChoiceService, AnswerChoiceService>();
