@@ -9,19 +9,19 @@
             _context = context;
         }
 
-        public void Add(QuizQuestion quizQuestion)
+        public async Task AddAsync(QuizQuestion quizQuestion)
         {
-            _context.QuizQuestions.Add(quizQuestion);
-            _context.SaveChanges();
+            await _context.QuizQuestions.AddAsync(quizQuestion);
+            await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<QuizQuestion> GetQuestionsByQuizId(int quizId)
+        public async Task<IEnumerable<QuizQuestion>> GetQuestionsByQuizIdAsync(int quizId)
         {
-            return _context.QuizQuestions
+            return await _context.QuizQuestions
                 .Include(x => x.Question)
                 .ThenInclude(q => q.AnswerChoices)
                 .Where(x => x.QuizId == quizId)
-                .ToList();
+                .ToListAsync();
         }
     }
 }

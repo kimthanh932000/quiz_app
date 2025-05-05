@@ -6,6 +6,6 @@
         Task<IEnumerable<Question>> GetAllAsync();
         Task<Question> AddAsync(Question question);
         Task<Question> UpdateAsync(Question question);
-        //void Delete(int id);
+        Task DeleteAsync(Question question);
     }
 }

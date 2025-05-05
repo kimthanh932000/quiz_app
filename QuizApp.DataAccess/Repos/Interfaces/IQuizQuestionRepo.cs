@@ -2,7 +2,7 @@
 {
     public interface IQuizQuestionRepo
     {
-        IEnumerable<QuizQuestion> GetQuestionsByQuizId(int quizId);
-        void Add(QuizQuestion quizQuestion);
+        Task<IEnumerable<QuizQuestion>> GetQuestionsByQuizIdAsync(int quizId);
+        Task AddAsync(QuizQuestion quizQuestion);
     }
 }

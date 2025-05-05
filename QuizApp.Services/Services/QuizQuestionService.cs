@@ -12,12 +12,12 @@ namespace QuizApp.Services.Services
 
         public async Task AddAsync(QuizQuestion quizQuestion)
         {
-            _quizQuestionRepo.Add(quizQuestion);
+            await _quizQuestionRepo.AddAsync(quizQuestion);
         }
 
         public async Task<IEnumerable<QuizQuestion>> GetQuestionsByQuizIdAsync(int id)
         {
-            return _quizQuestionRepo.GetQuestionsByQuizId(id);
+            return await _quizQuestionRepo.GetQuestionsByQuizIdAsync(id);
         }
     }
 }

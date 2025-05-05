@@ -9,23 +9,37 @@ namespace QuizApp.DataAccess.Repos
         {
             _context = context;
         }
-        public void Add(Quiz quiz)
+        public async Task<Quiz> AddAsync(Quiz quiz)
         {
-            _context.Quizzes.Add(quiz);
-            _context.SaveChanges();
+            await _context.Quizzes.AddAsync(quiz);
+            await _context.SaveChangesAsync();
+            return quiz;
         }
 
-        public IEnumerable<Quiz> GetAll()
+        public async Task UpdateAsync(Quiz quiz)
         {
-            return _context.Quizzes.ToList();
+            _context.Quizzes.Update(quiz);
+            await _context.SaveChangesAsync();
         }
 
-        public Quiz GetById(int id)
+        public async Task<IEnumerable<Quiz>> GetAllAsync()
         {
-            return _context.Quizzes
+            return await _context.Quizzes.ToListAsync();
+        }
+
+        public async Task<Quiz> GetByIdAsync(int id)
+        {
+            return await _context.Quizzes
                                 .Include(x => x.QuizQuestions)
                                 .ThenInclude(x => x.Question)
-                                .FirstOrDefault(x => x.Id == id);
+                                .FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task DeleteAsync(Quiz quiz)
+        {
+            _context.Quizzes.Remove(quiz);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

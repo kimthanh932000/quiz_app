@@ -1,0 +1,38 @@
+﻿@page "{quizId:int}/{questionId:int}"
+@model QuizApp.Web.Pages.Quiz.Question.EditModel
+@{
+    ViewData["Title"] = "Edit Question";
+}
+<h2>Edit Question</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="@Model.Data.Text" class="form-label">Question</label>
+        <input asp-for="@Model.Data.Text" class="form-control" />
+        <span asp-validation-for="@Model.Data.Text" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Answer Choices</label>
+        <div id="answerChoicesContainer">
+            @for (int i = 0; i < Model.Data.Options.Count; i++)
+            {
+                <div class="input-group mb-2 answer-entry">
+                    <input asp-for="@Model.Data.Options[i].Id" type="hidden" />
+                    <input asp-for="@Model.Data.Options[i].Text" class="form-control" />
+                    <div class="input-group-text">
+                        <input asp-for="Data.CorrectOption" type="radio" value="@i" class="form-check-input mt-0" />
+                        <label class="form-check-label ms-1">Correct</label>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Update</button>
+@*     <a asp-page="Quiz/Edit" class="btn btn-secondary mt-3">Back</a>
+ *@</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

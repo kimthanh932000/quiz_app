@@ -4,6 +4,8 @@
     {
         Task<Quiz> GetByIdAsync(int id);
         Task<IEnumerable<Quiz>> GetAllAsync();
-        Task AddAsync(Quiz quiz);
+        Task<Quiz> AddAsync(Quiz quiz);
+        Task UpdateAsync(Quiz quiz);
+        Task DeleteAsync(int id);
     }
 }

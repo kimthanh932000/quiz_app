@@ -27,5 +27,19 @@ namespace QuizApp.Web.Pages.Quiz
                 return Page();
             }
         }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            try
+            {
+                await _quizService.DeleteAsync(id);
+                return RedirectToPage();
+            } catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to delete quiz.");
+                ModelState.AddModelError(string.Empty, "An error occurred while trying to delete quiz.");
+                return Page();
+            }
+        }
     }
 }

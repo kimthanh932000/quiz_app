@@ -4,9 +4,9 @@
     {
         public void Configure(EntityTypeBuilder<Quiz> builder)
         {
-            builder
-                .Property(q => q.TimeLimit)
-                .IsRequired();
+            //builder
+            //    .Property(q => q.TimeLimit)
+            //    .IsRequired();
 
             builder
                 .HasMany(q => q.QuizAttempts)

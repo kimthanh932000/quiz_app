@@ -8,6 +8,7 @@ global using QuizApp.Services.Services.Interfaces;
 global using QuizApp.Services.Services;
 
 global using QuizApp.Models.Entities;
+global using QuizApp.Models.ViewModels;
 
 global using QuizApp.DataAccess.Data;
 global using QuizApp.DataAccess.Repos.Interfaces;

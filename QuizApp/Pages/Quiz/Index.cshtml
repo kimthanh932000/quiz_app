@@ -1,0 +1,54 @@
+﻿@page
+@model QuizApp.Web.Pages.Quiz.ListModel
+@{
+    ViewData["Title"] = "Quiz List";
+}
+<h2>Select a Quiz to Attempt</h2>
+
+@if (!Model.Quizzes.Any())
+{
+    <div class="alert alert-warning">No quizzes available to attempt.</div>
+}
+else
+{
+    <div class="list-group">
+        @foreach (var quiz in Model.Quizzes)
+        {
+            <div class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <!-- Quiz title -->
+                    <span>@quiz.Name</span>
+
+                    <!-- Button group -->
+                    <div>
+                        <!-- Start button -->
+                        <a asp-page="Attempt"
+                           asp-route-id="@quiz.Id"
+                           class="btn btn-sm btn-primary">
+                            Start
+                        </a>
+
+                        <!-- Edit button -->
+                        <a asp-page="Edit"
+                           asp-route-id="@quiz.Id"
+                           class="btn btn-sm btn-outline-secondary">
+                            Edit
+                        </a>
+
+                        <!-- Delete button -->
+                        <form method="post"
+                              asp-page-handler="Delete"
+                              asp-route-id="@quiz.Id"
+                              class="d-inline"
+                              onsubmit="return confirm('Are you sure you want to delete this quiz?');">
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

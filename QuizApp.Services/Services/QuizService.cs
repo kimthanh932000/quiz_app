@@ -10,19 +10,34 @@ namespace QuizApp.Services.Services
             _quizRepo = quizRepo;
         }
 
-        public async Task AddAsync(Quiz quiz)
+        public async Task<Quiz> AddAsync(Quiz quiz)
         {
-            _quizRepo.Add(quiz);
+            return await _quizRepo.AddAsync(quiz);
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var quiz = await _quizRepo.GetByIdAsync(id);
+            if (quiz == null)
+            {
+                throw new KeyNotFoundException($"Quiz {id} not found");
+            }
+            await _quizRepo.DeleteAsync(quiz);
         }
 
         public async Task<IEnumerable<Quiz>> GetAllAsync()
         {
-            return _quizRepo.GetAll();
+            return await _quizRepo.GetAllAsync();
         }
 
         public async Task<Quiz> GetByIdAsync(int id)
         {
-            return _quizRepo.GetById(id);
+            return await _quizRepo.GetByIdAsync(id);
+        }
+
+        public async Task UpdateAsync(Quiz quiz)
+        {
+            await _quizRepo.UpdateAsync(quiz);
         }
     }
 }

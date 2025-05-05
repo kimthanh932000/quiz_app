@@ -15,10 +15,14 @@ namespace QuizApp.Services.Services
             return await _questionRepo.AddAsync(question);
         }
 
-        //public async Task DeleteAsync(int id)
-        //{
-        //    _questionRepo.Delete(id);
-        //}
+        public async Task DeleteAsync(int id)
+        {
+            var question = await _questionRepo.GetByIdAsync(id);
+            if (question != null)
+            {
+                await _questionRepo.DeleteAsync(question);
+            }
+        }
 
         public async Task<IEnumerable<Question>> GetAllAsync()
         {

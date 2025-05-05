@@ -16,15 +16,11 @@
             return question;
         }
 
-        //public void Delete(int id)
-        //{
-        //    var question = _context.Questions.FirstOrDefault(q => q.Id == id);
-        //    if (question != null)
-        //    {
-        //        _context.Questions.Remove(question);
-        //        _context.SaveChanges();
-        //    }
-        //}
+        public async Task DeleteAsync(Question question)
+        {
+            _context.Questions.Remove(question);
+            await _context.SaveChangesAsync();
+        }
 
         public async Task<IEnumerable<Question>> GetAllAsync()
         {
