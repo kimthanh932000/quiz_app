@@ -48,9 +48,6 @@
                                    asp-route-quizId="@qq.QuizId"
                                    asp-route-questionId="@qq.QuestionId"
                                    class="btn btn-sm btn-outline-primary">Edit</a>
-                                @* <form method="post" asp-page-handler="Delete" asp-route-id="@qq.Question.Id" class="d-inline">
-                                    <button type="submit" asp-page-handler="Delete" asp-route-id="@qq.Question.Id" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this question?');">Delete</button>
-                                </form> *@
                                 <button type="submit" 
                                     asp-page-handler="Delete" 
                                     asp-route-id="@qq.Question.Id" 

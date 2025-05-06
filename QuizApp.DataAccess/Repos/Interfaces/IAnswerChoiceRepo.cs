@@ -5,6 +5,5 @@
         Task<IEnumerable<AnswerChoice>> GetByQuestionIdAsync(int questionId);
         Task AddAsync(AnswerChoice answer);
         Task UpdateAsync(AnswerChoice answer);
-        void Delete(int id);
     }
 }

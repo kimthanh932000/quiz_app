@@ -91,8 +91,6 @@ namespace QuizApp.Web.Pages.Quiz
 
                 var attemptResult = await _quizAttemptService.AddAsync(currentAttempt);
 
-                //TempData["Score"] = $"{attemptResult.Score} / {Data.Count}";
-
                 return RedirectToPage("Score", new { id = attemptResult.Id });
 
             } catch (Exception ex)

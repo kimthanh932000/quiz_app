@@ -14,11 +14,6 @@
             await _answerChoiceRepo.AddAsync(answerChoice);
         }
 
-        //public async Task DeleteAsync(int id)
-        //{
-        //    _answerChoiceRepo.Delete(id);
-        //}
-
         public async Task<IEnumerable<AnswerChoice>> GetByQuestionIdAsync(int id)
         {
             return await _answerChoiceRepo.GetByQuestionIdAsync(id);

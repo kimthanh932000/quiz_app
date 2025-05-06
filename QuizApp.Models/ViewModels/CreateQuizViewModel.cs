@@ -7,7 +7,5 @@
 
         [Required]
         public List<int> SelectedQuestionIds { get; set; }
-
-        //public List<Models.Entities.Question> AllQuestions { get; set; }
     }
 }
