@@ -10,9 +10,9 @@ namespace QuizApp.Services.Services
             _quizAttemptRepo = quizAttemptRepo;
         }
 
-        public async Task AddAsync(QuizAttempt attempt)
+        public async Task<QuizAttempt> AddAsync(QuizAttempt attempt)
         {
-            _quizAttemptRepo.Add(attempt);
+            return await _quizAttemptRepo.AddAsync(attempt);
         }
 
         public async Task<QuizAttempt> GetByIdAsync(int id)

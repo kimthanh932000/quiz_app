@@ -11,10 +11,11 @@ namespace QuizApp.DataAccess.Repos
             _context = context;
         }
 
-        public void Add(QuizAttempt attempt)
+        public async Task<QuizAttempt> AddAsync(QuizAttempt attempt)
         {
-            _context.QuizAttempts.Add(attempt);
-            _context.SaveChanges();
+            await _context.QuizAttempts.AddAsync(attempt);
+            await _context.SaveChangesAsync();
+            return attempt;
         }
 
         public QuizAttempt GetById(int id)
